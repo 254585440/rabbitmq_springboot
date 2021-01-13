@@ -16,6 +16,12 @@ public class RabbitMqTest {
     private RabbitTemplate rabbitTemplate;
 
     @Test
+    public void testDlx() throws InterruptedException {
+        rabbitTemplate.convertAndSend("orders.exchange","create.order","创建订单");
+        Thread.sleep(20000);
+    }
+
+    @Test
     public void testTopic(){
         rabbitTemplate.convertAndSend("topics","user.info","user.info消息");
     }

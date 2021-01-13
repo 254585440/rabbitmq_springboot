@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class TopicConsumer {
 
-    @RabbitListener(bindings = {
+    @RabbitListener(bindings =
             @QueueBinding(
                     value = @Queue,
                     exchange = @Exchange(value = "topics",type = "topic"),
                     key = {"info.*","user.#"}
             )
-    })
+    )
     public void TopicConsumer1(String message){
         System.out.println("message1=" + message);
     }
